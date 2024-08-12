@@ -11,34 +11,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
           child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    color: Colors.red,
-                    height: 60,
-                    width: double.infinity,
-                    alignment: Alignment.center,
-                    child: const Text(
-                      "My App",
-                      style: TextStyle(color: Colors.white),
-                    ),
+            child: PageView.builder(
+              itemCount: imageBackground.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) => Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: NetworkImage(imageBackground[index]),
+                    fit: BoxFit.cover,
                   ),
-                  ListView.separated(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) => Container(
-                            height: 150,
-                            color: Colors.blueGrey,
-                          ),
-                      separatorBuilder: (context, index) => const SizedBox(
-                            height: 10,
-                          ),
-                      itemCount: 10)
-                ],
+                ),
               ),
             ),
           ),
@@ -47,3 +34,13 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+List imageBackground = [
+  "https://images.pexels.com/photos/3533228/pexels-photo-3533228.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/3714435/pexels-photo-3714435.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/3616936/pexels-photo-3616936.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "https://images.pexels.com/photos/3262909/pexels-photo-3262909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  'https://images.pexels.com/photos/3035298/pexels-photo-3035298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+  'https://images.pexels.com/photos/3555937/pexels-photo-3555937.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+  'https://images.pexels.com/photos/3284696/pexels-photo-3284696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+];
